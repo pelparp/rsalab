@@ -72,16 +72,6 @@ catch {
     LogMessage "Error installing dotnet6: $_"
 }
 
-# Install Libreoffice
-try {
-    Invoke-WebRequest -Uri "https://download.documentfoundation.org/libreoffice/stable/24.2.2/win/x86_64/LibreOffice_24.2.2_Win_x86-64.msi" -OutFile "C:\temp\LibreOffice_24.2.2_Win_x86-64.msi"
-    Start-Process -FilePath "msiexec.exe" -ArgumentList "/i", "C:\temp\LibreOffice_24.2.2_Win_x86-64.msi", "/qn", "/norestart", "/lv C:\temp\logfile.log" -Wait
-    LogMessage "LibreOffice installed successfully."
-}
-catch {
-    LogMessage "Error installing LibreOffice: $_"
-}
-
 # Git clone
 try {
     &"C:\Program Files\Git\bin\git.exe" clone "https://$GITHUB_PAT@github.com/rsa-lab/lab1.git" "C:\Lab"
